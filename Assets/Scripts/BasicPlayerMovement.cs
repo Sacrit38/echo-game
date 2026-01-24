@@ -8,14 +8,20 @@ public class BasicPlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Echolocation Settings")]
-    public float stepInterval = 0.5f; // Jeda antar langkah kaki
+    public float stepInterval = 0.5f; // Jeda antar langkah kaki saat JALAN
     private float stepTimer;
     
-    // public EcholocationSystem echoSystem; 
+    [Header("Standby Settings")]
+    public float standbyInterval = 2.0f; // Jeda antar ripple saat DIAM
+    private float standbyTimer;
+
+    public GameObject ripplePrefab;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        // Set standbyTimer agar saat game mulai langsung muncul ripple pertama
+        standbyTimer = 0; 
     }
 
     void Update()
@@ -25,16 +31,27 @@ public class BasicPlayerMovement : MonoBehaviour
 
         if (moveInput.sqrMagnitude > 0)
         {
+            // LOGIKA SAAT JALAN
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
                 TriggerFootstepEcho();
                 stepTimer = stepInterval;
             }
+            // Reset standbyTimer supaya saat berhenti, jedanya mulai dari awal
+            standbyTimer = standbyInterval; 
         }
         else
         {
-            stepTimer = 0;
+            // LOGIKA SAAT DIAM (STANDBY)
+            stepTimer = 0; // Reset stepTimer agar saat mulai jalan langsung bunyi
+
+            standbyTimer -= Time.deltaTime;
+            if (standbyTimer <= 0)
+            {
+                TriggerFootstepEcho();
+                standbyTimer = standbyInterval;
+            }
         }
     }
 
@@ -45,8 +62,15 @@ public class BasicPlayerMovement : MonoBehaviour
 
     void TriggerFootstepEcho()
     {
-        Debug.Log("Langkah kaki terdeteksi: Memicu Gelombang Ekolokasi!");
-        // memanggil fungsi untuk memunculkan visual gelombang (Putih/Normal)
-        // echoSystem.CreateRipple(transform.position, Color.white);
+        if (ripplePrefab != null)
+        {
+            Debug.Log("Memicu Gelombang Ekolokasi!");
+            GameObject ripple = Instantiate(ripplePrefab, transform.position, Quaternion.identity);
+            
+            // Opsional: Jika Anda pakai RippleEmitter yang tadi, ganti baris Instantiate di atas 
+            // dengan: GetComponent<RippleEmitter>().EmitRipple("White");
+
+            Destroy(ripple, 1.0f);
+        }
     }
 }
