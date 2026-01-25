@@ -64,11 +64,13 @@ public class BasicPlayerMovement : MonoBehaviour
     {
         if (ripplePrefab != null)
         {
+		Vector3 spawnPos = rb.position;
             Debug.Log("Memicu Gelombang Ekolokasi!");
-            GameObject ripple = Instantiate(ripplePrefab, transform.position, Quaternion.identity);
+            GameObject ripple = Instantiate(ripplePrefab, transform.position, Quaternion.identity, this.transform);
             
-            // Opsional: Jika Anda pakai RippleEmitter yang tadi, ganti baris Instantiate di atas 
+            //  Jika  pakai RippleEmitter, ganti baris Instantiate di atas 
             // dengan: GetComponent<RippleEmitter>().EmitRipple("White");
+		ripple.name = "AttachedRipple";
 
             Destroy(ripple, 1.0f);
         }
