@@ -21,4 +21,6 @@ public class MenuInputManager : MonoBehaviour
         Application.Quit();
     }
 
+    
+
 }
