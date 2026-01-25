@@ -6,13 +6,14 @@ public class BasicPlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
+    private Animator anim; 
 
     [Header("Echolocation Settings")]
-    public float stepInterval = 0.5f; // Jeda antar langkah kaki saat JALAN
+    public float stepInterval = 0.5f; 
     private float stepTimer;
     
     [Header("Standby Settings")]
-    public float standbyInterval = 2.0f; // Jeda antar ripple saat DIAM
+    public float standbyInterval = 2.0f; 
     private float standbyTimer;
 
     public GameObject ripplePrefab;
@@ -20,32 +21,52 @@ public class BasicPlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // Set standbyTimer agar saat game mulai langsung muncul ripple pertama
+        anim = GetComponent<Animator>(); 
         standbyTimer = 0; 
     }
 
     void Update()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+     
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
-        if (moveInput.sqrMagnitude > 0)
+        if (horizontal != 0) 
         {
-            // LOGIKA SAAT JALAN
+      
+            moveInput = new Vector2(horizontal, 0);
+        }
+        else if (vertical != 0) 
+        {
+       
+            moveInput = new Vector2(0, vertical);
+        }
+        else 
+        {
+            moveInput = Vector2.zero;
+        }
+
+        
+        anim.SetFloat("Speed", moveInput.sqrMagnitude);
+
+        if (moveInput != Vector2.zero)
+        {
+            anim.SetFloat("MoveX", moveInput.x);
+            anim.SetFloat("MoveY", moveInput.y);
+            
+           
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
                 TriggerFootstepEcho();
                 stepTimer = stepInterval;
             }
-            // Reset standbyTimer supaya saat berhenti, jedanya mulai dari awal
             standbyTimer = standbyInterval; 
         }
         else
         {
-            // LOGIKA SAAT DIAM (STANDBY)
-            stepTimer = 0; // Reset stepTimer agar saat mulai jalan langsung bunyi
-
+         
+            stepTimer = 0; 
             standbyTimer -= Time.deltaTime;
             if (standbyTimer <= 0)
             {
@@ -57,21 +78,16 @@ public class BasicPlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveInput.normalized * moveSpeed * Time.fixedDeltaTime);
+       
+        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
 
     void TriggerFootstepEcho()
     {
         if (ripplePrefab != null)
         {
-		Vector3 spawnPos = rb.position;
-            Debug.Log("Memicu Gelombang Ekolokasi!");
             GameObject ripple = Instantiate(ripplePrefab, transform.position, Quaternion.identity, this.transform);
-            
-            //  Jika  pakai RippleEmitter, ganti baris Instantiate di atas 
-            // dengan: GetComponent<RippleEmitter>().EmitRipple("White");
-		ripple.name = "AttachedRipple";
-
+            ripple.name = "AttachedRipple";
             Destroy(ripple, 1.0f);
         }
     }
