@@ -27,14 +27,21 @@ public class DoorScript : MonoBehaviour
 
     void Update()
     {
-        if (interact && Input.GetButtonDown("Fire1"))
+        if (interact && Input.GetButtonDown("Fire1") && !TransScript.Instance.isPlaying)
         {
-            cams.setStart(start);
-            cams.setEnd(end);
-            //Make cutscene and transition singleton later
-            player.position = target.position;
-            transform.parent.parent.gameObject.SetActive(false);
-            target.parent.parent.gameObject.SetActive(true);
+            StartCoroutine(SceneTransition());
         }
+    }
+
+    IEnumerator SceneTransition()
+    {
+        TransScript.Instance.Transitoned();
+        yield return new WaitForSeconds(0.5f);
+
+        cams.setStart(start);
+        cams.setEnd(end);
+        player.position = target.position;
+        transform.parent.parent.gameObject.SetActive(false);
+        target.parent.parent.gameObject.SetActive(true);
     }
 }
