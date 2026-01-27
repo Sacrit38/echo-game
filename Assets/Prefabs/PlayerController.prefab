@@ -293,6 +293,9 @@ MonoBehaviour:
   target: {fileID: 1547284273748912155}
   smoothSpeed: 0.02
   offset: {x: 0, y: 0, z: -10}
+  clamped: 0
+  start: {x: 0, y: 0}
+  end: {x: 0, y: 0}
 --- !u!1 &6218463710146410946
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +444,7 @@ GameObject:
   - component: {fileID: 3193610532206039997}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,7 +545,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 14.222222, y: 14.222222}
     newSize: {x: 10.24, y: 10.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

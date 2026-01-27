@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuInputManager : MonoBehaviour
 {
     public GameObject optionPanel;
+    public Collider collidery;
     public void Play()
     {
         SceneManager.LoadScene(1);
