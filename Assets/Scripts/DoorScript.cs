@@ -10,6 +10,10 @@ public class DoorScript : MonoBehaviour
     public SmoothCamera cams;
     public Vector2 start, end;
 
+    [Header("Transition Animation")]
+    public string animationTrigger = "Transitioned";
+    public float actionDelay = 0.5f;
+
     bool interact = false;
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player"))
@@ -29,14 +33,15 @@ public class DoorScript : MonoBehaviour
     {
         if (interact && Input.GetButtonDown("Fire1") && !TransScript.Instance.isPlaying)
         {
+            TransScript.Instance.isPlaying = true;
             StartCoroutine(SceneTransition());
         }
     }
 
     IEnumerator SceneTransition()
     {
-        TransScript.Instance.Transitoned();
-        yield return new WaitForSeconds(0.5f);
+        TransScript.Instance.Transitoned(animationTrigger);
+        yield return new WaitForSeconds(actionDelay);
 
         cams.setStart(start);
         cams.setEnd(end);

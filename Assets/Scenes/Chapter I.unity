@@ -775,6 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transAnimator: {fileID: 1121899008}
+  isPlaying: 0
 --- !u!1 &529203456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,6 +3017,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1215791078}
+    - target: {fileID: 425759532155107482, guid: 8dcf59299eb453040936a4540246a9e1, type: 3}
+      propertyPath: actionDelay
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2411452510527605237, guid: 8dcf59299eb453040936a4540246a9e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3093,6 +3098,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1223472845}
+    - target: {fileID: 1845278584828053537, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: animationTrigger
+      value: Supermarket
+      objectReference: {fileID: 0}
     - target: {fileID: 2658373708546351924, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3149,6 +3158,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1510294487}
+    - target: {fileID: 6101970633514685829, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: actionDelay
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

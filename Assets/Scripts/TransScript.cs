@@ -11,10 +11,9 @@ public class TransScript : MonoBehaviour
     }
     public Animator transAnimator;
     public bool isPlaying;
-    public void Transitoned()
+    public void Transitoned(string animationTrigger)
     {
-        transAnimator.SetTrigger("Transitioned");
-        isPlaying = true;
+        transAnimator.SetTrigger(animationTrigger);
         StartCoroutine(CheckAnimationEnd());
     }
     
