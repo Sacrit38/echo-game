@@ -32,4 +32,13 @@ public class SmoothCamera : MonoBehaviour
        
         transform.position = smoothedPosition;
     }
+
+    public void setStart(Vector2 start)
+    {
+        this.start = start;
+    }
+    public void setEnd(Vector2 end)
+    {
+        this.end = end;
+    }
 }
