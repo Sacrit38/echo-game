@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7e2035b9a407245b9ec2c35c06c3bb, type: 3}
+  m_Name: Level1_04
+  m_EditorClassIdentifier: 
+  lines:
+  - speakerName: Odele
+    lines: "\u201CRoses\u2026 I remember Briar gave me one once at our 6th-grade
+      talent show.\u201D"
+  - speakerName: Odele
+    lines: "\u201CIt was so sweet of her, she couldn't stop gushing over my performance,
+      hehe.\u201D"
+  - speakerName: Odele
+    lines: "\u201C...\u201D"
+  - speakerName: Odele
+    lines: "\u201CI wonder how she\u2019s now\u2026 She would've grown up so much,
+      I'm not sure if I\u2019ll be able to recognize her voice\u2026\" "
+  - speakerName: Odele
+    lines: "\u201CI wonder how she\u2019s now\u2026 She would've grown up so much,
+      I'm not sure if I\u2019ll be able to recognize her voice\u2026\" "
+  - speakerName: Odele
+    lines: "\u201CI kinda can't wait to meet her this weekend.\u201D"
