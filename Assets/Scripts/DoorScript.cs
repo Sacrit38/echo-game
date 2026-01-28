@@ -40,7 +40,7 @@ public class DoorScript : MonoBehaviour
 
     IEnumerator SceneTransition()
     {
-        TransScript.Instance.Transitoned(animationTrigger);
+        TransScript.Instance.Transitioned(animationTrigger);
         yield return new WaitForSeconds(actionDelay);
 
         cams.setStart(start);
