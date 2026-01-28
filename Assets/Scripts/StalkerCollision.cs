@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
 
 public class StalkerCollision : MonoBehaviour
 {
@@ -7,14 +6,19 @@ public class StalkerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            RestartGame();
+           
+            GameOverHandler handler = FindObjectOfType<GameOverHandler>(true);
+            if (handler != null)
+            {
+                handler.SetupGameOver();
+            }
+            else
+            {
+             
+                UnityEngine.SceneManagement.SceneManager.LoadScene(
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+                );
+            }
         }
-    }
-
-    void RestartGame()
-    {
-     
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
     }
 }
