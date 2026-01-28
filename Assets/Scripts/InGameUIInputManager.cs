@@ -14,7 +14,7 @@ public class InGameUIInputManager : MonoBehaviour
     {
         audioSource.Play();
         pausePanel.SetActive(!pausePanel.activeSelf);
-        Time.timeScale = Time.timeScale == 0f && !restartConfirmationPanel.activeSelf ? 1.0f : 0f;
+        Time.timeScale = !pausePanel.activeSelf ? 1.0f : 0f;
         restartConfirmationPanel.SetActive(false);
         pauseButtonImage.sprite = pauseButtonImage.sprite.name == pauseImage.name ? playImage : pauseImage;
     }

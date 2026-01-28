@@ -808,7 +808,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 310685649770950929}
         m_TargetAssemblyTypeName: OptionInputManager, Assembly-CSharp
-        m_MethodName: ToggleOptions
+        m_MethodName: CallToggleOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -8,9 +8,14 @@ public class OptionInputManager : MonoBehaviour
     public Slider bgMusic, sfx;
     
     public AudioSource audioSource;
-    public void ToggleOptions()
+    public void CallToggleOptions()
+    {
+        StartCoroutine(ToggleOptions());
+    }
+    public IEnumerator ToggleOptions()
     {
         audioSource.Play();
+        yield return new WaitForSeconds(0.1f);
         gameObject.SetActive(false);
     }
     void Start()
