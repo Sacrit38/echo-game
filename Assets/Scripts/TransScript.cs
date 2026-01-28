@@ -6,12 +6,12 @@ using UnityEngine;
 public class TransScript : MonoBehaviour
 {
     [Serializable]
-    public class SoundPair<TKey, TValue>
+    public class Pair<TKey, TValue>
     {
         public TKey trigger;
         public TValue value;
 
-        public SoundPair(TKey trigger, TValue value)
+        public Pair(TKey trigger, TValue value)
         {
             this.trigger = trigger;
             this.value = value;
@@ -19,16 +19,28 @@ public class TransScript : MonoBehaviour
     }
     public static TransScript Instance {get; private set;}
     [Header("SoundList")]
-    public List<SoundPair<string, AudioClip>> soundPairs;
+    public List<Pair<string, AudioClip>> soundPairs;
     Dictionary<string, AudioClip> soundDict = new();
+
+    [Header("SoundList")]
+    public List<Pair<string, Pair<string, GameObject>>> actionPairs;
+    Dictionary<string, Pair<string, GameObject>> actionDict = new();
+
     void Awake()
     {
         Instance = this;
-        foreach (SoundPair<string, AudioClip> item in soundPairs)
+        foreach (Pair<string, AudioClip> item in soundPairs)
         {
             if (!soundDict.ContainsKey(item.trigger))
             {
                 soundDict.Add(item.trigger, item.value);
+            }
+        }
+        foreach (Pair<string, Pair<string, GameObject>> item in actionPairs)
+        {
+            if (!actionDict.ContainsKey(item.trigger))
+            {
+                actionDict.Add(item.trigger, item.value);
             }
         }
     }
@@ -39,16 +51,30 @@ public class TransScript : MonoBehaviour
     public Animator transAnimator;
     public bool isPlaying;
 
-    public void Transitioned(string animationTrigger)
+    public void Transitioned(string trigger, float delay)
     {
-        transAnimator.SetTrigger(animationTrigger);
-        audioSource.clip = soundDict[animationTrigger];
+        transAnimator.SetTrigger(trigger);
+        audioSource.clip = soundDict[trigger];
         audioSource.Play();
-        StartCoroutine(CheckAnimationEnd());
+
+        StartCoroutine(CheckAnimationEnd(trigger, delay));
     }
     
-    IEnumerator CheckAnimationEnd()
+    IEnumerator CheckAnimationEnd(string trigger, float delay)
     {
+        yield return new WaitForSeconds(delay);
+        if (actionDict.ContainsKey(trigger))
+        {
+            switch (actionDict[trigger].trigger)
+            {
+                case "activate":
+                    actionDict[trigger].value.SetActive(true);
+                    break;
+                
+                default:
+                break;
+            }
+        }
         while (transAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
             yield return null;
