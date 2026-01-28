@@ -1,54 +1,78 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SimpleDoor : MonoBehaviour
 {
-   
     public static SimpleDoor Instance;
-
-    public Transform player;
-    public SmoothCamera cams;
     public Image fadeImage;
     public float fadeSpeed = 1.5f;
 
-    private void Awake() { Instance = this; }
+    [Header("References (Optional for Scene Move)")]
+    public Transform player;
+    public SmoothCamera cams;
 
-   
-    public void StartTransition(Transform targetSpawn, Vector2 start, Vector2 end, GameObject current, GameObject next)
-    {
-        StartCoroutine(DoTransition(targetSpawn, start, end, current, next));
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
+            if (fadeImage != null && fadeImage.canvas != null) 
+                DontDestroyOnLoad(fadeImage.canvas.gameObject);
+        } else {
+            Destroy(gameObject);
+        }
     }
 
-    IEnumerator DoTransition(Transform targetSpawn, Vector2 start, Vector2 end, GameObject current, GameObject next)
+  
+    public void StartTransition(Transform targetSpawn, Vector2 start, Vector2 end, GameObject current, GameObject next)
     {
-      
-        float alpha = 0;
-        while (alpha < 1)
-        {
-            alpha += Time.unscaledDeltaTime * fadeSpeed;
-            fadeImage.color = new Color(0, 0, 0, alpha);
-            yield return null;
-        }
+        StartCoroutine(DoRoomTransition(targetSpawn, start, end, current, next));
+    }
 
-      
+    IEnumerator DoRoomTransition(Transform targetSpawn, Vector2 start, Vector2 end, GameObject current, GameObject next)
+    {
+        yield return StartCoroutine(Fade(1)); // Gelap
+
         player.position = targetSpawn.position;
-        cams.setStart(start);
-        cams.setEnd(end);
-
-     
-        next.SetActive(true);
-        current.SetActive(false);
+        if (cams != null) {
+            cams.setStart(start);
+            cams.setEnd(end);
+        }
+        if(next != null) next.SetActive(true);
+        if(current != null) current.SetActive(false);
 
         yield return new WaitForSecondsRealtime(0.3f);
+        yield return StartCoroutine(Fade(0)); // Terang
+    }
 
+   
+    public void ChangeScene(string sceneName)
+    {
+        StartCoroutine(DoSceneTransition(sceneName));
+    }
+
+    IEnumerator DoSceneTransition(string sceneName)
+    {
+        yield return StartCoroutine(Fade(1)); // Gelap
+        SceneManager.LoadScene(sceneName);
        
-        while (alpha > 0)
+        yield return new WaitForSecondsRealtime(0.5f);
+        yield return StartCoroutine(Fade(0)); // Terang
+    }
+
+    IEnumerator Fade(float targetAlpha)
+    {
+        if (fadeImage == null) yield break;
+        float startAlpha = fadeImage.color.a;
+        float timer = 0;
+        while (timer < 1f)
         {
-            alpha -= Time.unscaledDeltaTime * fadeSpeed;
-            fadeImage.color = new Color(0, 0, 0, alpha);
+            timer += Time.unscaledDeltaTime * fadeSpeed;
+            float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, timer);
+            fadeImage.color = new Color(0, 0, 0, newAlpha);
             yield return null;
         }
-        fadeImage.color = new Color(0, 0, 0, 0);
+        fadeImage.color = new Color(0, 0, 0, targetAlpha);
     }
 }
