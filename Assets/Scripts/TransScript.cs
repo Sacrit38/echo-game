@@ -23,8 +23,8 @@ public class TransScript : MonoBehaviour
     Dictionary<string, AudioClip> soundDict = new();
 
     [Header("SoundList")]
-    public List<Pair<string, Pair<string, GameObject>>> actionPairs;
-    Dictionary<string, Pair<string, GameObject>> actionDict = new();
+    public List<Pair<string, List<Pair<string, GameObject>>>> actionPairs;
+    Dictionary<string, List<Pair<string, GameObject>>> actionDict = new();
 
     void Awake()
     {
@@ -36,7 +36,7 @@ public class TransScript : MonoBehaviour
                 soundDict.Add(item.trigger, item.value);
             }
         }
-        foreach (Pair<string, Pair<string, GameObject>> item in actionPairs)
+        foreach (Pair<string, List<Pair<string, GameObject>>> item in actionPairs)
         {
             if (!actionDict.ContainsKey(item.trigger))
             {
@@ -65,14 +65,17 @@ public class TransScript : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (actionDict.ContainsKey(trigger))
         {
-            switch (actionDict[trigger].trigger)
+            foreach (Pair<string, GameObject> item in actionDict[trigger])
             {
-                case "activate":
-                    actionDict[trigger].value.SetActive(true);
+                switch (item.trigger)
+                {
+                    case "activate":
+                        item.value.SetActive(true);
+                        break;
+                    
+                    default:
                     break;
-                
-                default:
-                break;
+                }
             }
         }
         while (transAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)

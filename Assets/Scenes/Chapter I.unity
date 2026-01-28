@@ -242,7 +242,7 @@ MonoBehaviour:
   actionPairs:
   - trigger: Supermarket
     value:
-      trigger: activate
+    - trigger: activate
       value: {fileID: 1912072685}
   audioSource: {fileID: 1121899009}
   transAnimator: {fileID: 1121899008}
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.95
+  m_Intensity: 2.55
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -519,6 +519,10 @@ PrefabInstance:
       propertyPath: actionDelay
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3660203538555027357, guid: 203cff5af6323404097151443d5c1fd2, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6186042359446363817, guid: 203cff5af6323404097151443d5c1fd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -565,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6997695680374012135, guid: 203cff5af6323404097151443d5c1fd2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -855,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252214509908143075, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6101970633514685829, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
       propertyPath: cams
