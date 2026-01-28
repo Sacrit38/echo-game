@@ -21,8 +21,15 @@ public class BasicPlayerMovement : MonoBehaviour
     public SpriteRenderer playerSprite; 
     private Transform enemyTransform;
     private Color currentRippleColor = Color.white;
+    public float shakeIntensity = 0.05f; 
 
     public GameObject ripplePrefab;
+
+[Header("Camera Bounds")]
+public bool useBounds = true;
+public float minX, maxX, minY, maxY;
+    
+    private Vector3 currentShakeOffset;
 
     void Start()
     {
@@ -73,18 +80,9 @@ public class BasicPlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        if (horizontal != 0) 
-        {
-            moveInput = new Vector2(horizontal, 0);
-        }
-        else if (vertical != 0) 
-        {
-            moveInput = new Vector2(0, vertical);
-        }
-        else 
-        {
-            moveInput = Vector2.zero;
-        }
+        if (horizontal != 0) moveInput = new Vector2(horizontal, 0);
+        else if (vertical != 0) moveInput = new Vector2(0, vertical);
+        else moveInput = Vector2.zero;
     }
 
     void HandlePanicSystem()
@@ -92,25 +90,54 @@ public class BasicPlayerMovement : MonoBehaviour
         if (enemyTransform == null) 
         {
             StalkerAI stalker = FindObjectOfType<StalkerAI>();
-            if (stalker) 
-            {
-                enemyTransform = stalker.transform;
-            }
+            if (stalker) enemyTransform = stalker.transform;
             else
             {
                 currentRippleColor = Color.white;
                 playerSprite.color = Color.white;
                 stepInterval = defaultStepInterval;
+                currentShakeOffset = Vector3.zero;
                 return;
             }
         }
 
-        // Jika stalker ada di scene, langsung buat merah & detak cepat
         currentRippleColor = Color.red;
         playerSprite.color = Color.red;
-        stepInterval = 0.2f; // Detak jantung cepat tanda dikejar
+        stepInterval = 0.2f;
+
+     
+        Vector2 shakePoint = Random.insideUnitCircle * shakeIntensity;
+        currentShakeOffset = new Vector3(shakePoint.x, shakePoint.y, 0);
     }
 
+   
+    void LateUpdate()
+    {
+        if (Camera.main != null)
+    {
+       
+       if (Camera.main != null)
+        {
+            Vector3 finalPos = Camera.main.transform.position;
+
+           
+            if (useBounds)
+            {
+                finalPos.x = Mathf.Clamp(finalPos.x, minX, maxX);
+                finalPos.y = Mathf.Clamp(finalPos.y, minY, maxY);
+            }
+
+            
+            if (enemyTransform != null)
+            {
+                finalPos += currentShakeOffset;
+            }
+
+            
+            Camera.main.transform.position = finalPos;
+        }
+    }
+}
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
@@ -122,13 +149,8 @@ public class BasicPlayerMovement : MonoBehaviour
         {
             GameObject ripple = Instantiate(ripplePrefab, transform.position, Quaternion.identity, this.transform);
             ripple.name = "AttachedRipple";
-
             SpriteRenderer rippleSR = ripple.GetComponent<SpriteRenderer>();
-            if (rippleSR != null)
-            {
-                rippleSR.color = currentRippleColor;
-            }
-
+            if (rippleSR != null) rippleSR.color = currentRippleColor;
             Destroy(ripple, 1.0f);
         }
     }
