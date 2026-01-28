@@ -7,8 +7,10 @@ public class OptionInputManager : MonoBehaviour
 {
     public Slider bgMusic, sfx;
     
+    public AudioSource audioSource;
     public void ToggleOptions()
     {
+        audioSource.Play();
         gameObject.SetActive(false);
     }
     void Start()
@@ -19,6 +21,14 @@ public class OptionInputManager : MonoBehaviour
         sfx.onValueChanged.AddListener(delegate {sfxSlider();});
     }
 
-    void bgmSlider(){ GlobalScript.Instance.setBgMusic(bgMusic.value);}
-    void sfxSlider(){ GlobalScript.Instance.setSfx(sfx.value);}
+    void bgmSlider()
+    {
+        audioSource.Play();
+        GlobalScript.Instance.setBgMusic(bgMusic.value);
+    }
+    void sfxSlider()
+    {
+        audioSource.Play();
+        GlobalScript.Instance.setSfx(sfx.value);
+    }
 }

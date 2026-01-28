@@ -9,8 +9,10 @@ public class InGameUIInputManager : MonoBehaviour
     public GameObject pausePanel, optionPanel, restartConfirmationPanel;
     public Sprite pauseImage, playImage;
     public Image pauseButtonImage;
+    public AudioSource audioSource;
     public void TogglePause()
     {
+        audioSource.Play();
         pausePanel.SetActive(!pausePanel.activeSelf);
         Time.timeScale = Time.timeScale == 0f && !restartConfirmationPanel.activeSelf ? 1.0f : 0f;
         restartConfirmationPanel.SetActive(false);
@@ -19,21 +21,25 @@ public class InGameUIInputManager : MonoBehaviour
 
     public void ToggleOption()
     {
+        audioSource.Play();
         optionPanel.SetActive(true);
     }
     
     public void ExitToTitle()
     {
+        audioSource.Play();
         SceneManager.LoadScene(0);
     }
 
     public void Restart()
     {
+        audioSource.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void RestartConfirmationToggle()
     {
+        audioSource.Play();
         restartConfirmationPanel.SetActive(!restartConfirmationPanel.activeSelf);
         Time.timeScale = Time.timeScale == 0f && !pausePanel.activeSelf ? 1.0f : 0f;
     }
