@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TransScript : MonoBehaviour
@@ -22,7 +24,7 @@ public class TransScript : MonoBehaviour
     public List<Pair<string, AudioClip>> soundPairs;
     Dictionary<string, AudioClip> soundDict = new();
 
-    [Header("SoundList")]
+    [Header("ActionList")]
     public List<Pair<string, List<Pair<string, GameObject>>>> actionPairs;
     Dictionary<string, List<Pair<string, GameObject>>> actionDict = new();
 
@@ -54,8 +56,11 @@ public class TransScript : MonoBehaviour
     public void Transitioned(string trigger, float delay)
     {
         transAnimator.SetTrigger(trigger);
-        audioSource.clip = soundDict[trigger];
-        audioSource.Play();
+        if (soundDict.ContainsKey(trigger))
+        {
+            audioSource.clip = soundDict[trigger];
+            audioSource.Play();
+        }
 
         StartCoroutine(CheckAnimationEnd(trigger, delay));
     }
@@ -74,7 +79,12 @@ public class TransScript : MonoBehaviour
                         break;
                     
                     default:
-                    break;
+                        TextMeshProUGUI textMeshProUGUI;
+                        if (item.value.TryGetComponent(out textMeshProUGUI))
+                        {
+                            textMeshProUGUI.SetText(item.trigger);
+                        }
+                        break;
                 }
             }
         }
