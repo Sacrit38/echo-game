@@ -1411,7 +1411,7 @@ PrefabInstance:
     - target: {fileID: 1280442931172554221, guid: ce70a65e491840c4c90883abbe22e0d7, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: 9f5dd836babda4f4c88bf4f6bd233dba, type: 2}
+      objectReference: {fileID: 11400000, guid: 3c393a8d10840f448a7ebd1ac55b2ea2, type: 2}
     - target: {fileID: 1280442931172554221, guid: ce70a65e491840c4c90883abbe22e0d7, type: 3}
       propertyPath: dialogueManager
       value: 

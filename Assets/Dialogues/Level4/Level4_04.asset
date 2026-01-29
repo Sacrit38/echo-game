@@ -48,3 +48,28 @@ MonoBehaviour:
   - speakerName: Officer
     lines: "\u201CIf someone had forced entry, there would usually be signs. A broken
       lock, a window, something disturbed.\u201D"
+  - speakerName: Officer
+    lines: "\u201CRight now, this falls under a \u2018suspicious circumstances\u2019
+      report. We can log it in, but we don\u2019t have the grounds to open a full
+      investigation.\u201D"
+  - speakerName: Odele
+    lines: "\u201C\u2026So what the hell am I supposed to do?\u201D"
+  - speakerName: Officer
+    lines: "\u201CIf you don\u2019t feel safe, stay with someone you trust for a
+      few days. Make sure your doors and windows are secured at all times.\""
+  - speakerName: Officer
+    lines: "\"And if you see someone or get a clear description, call us immediately.\u201D"
+  - speakerName: Odele
+    lines: "\u201CI can\u2019t see- I mean\u2026 I wouldn\u2019t know how to describe
+      them\u2026\u201D"
+  - speakerName: Officer
+    lines: "\u201C...\u201D"
+  - speakerName: Officer
+    lines: "\u201C\u2026Right. Then call if you hear them again.\u201D"
+  - speakerName: Odele
+    lines: "\u201CSo you can\u2019t help me\u2026?\u201D"
+  - speakerName: Officer
+    lines: "\u201CWe are helping, miss. But we have to work with evidence. And right
+      now, we don\u2019t have enough.\u201D"
+  - speakerName: Officer
+    lines: "\u201CIf anything new happens, come back and update the report.\u201D"
