@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: Level1_05
   m_EditorClassIdentifier: 
   lines:
-  - speakerName: Odele
-    lines: "\u201CHello?\u201D"
-  - speakerName: Odele
-    lines: "\u201C...\u201D"
-  - speakerName: Odele
-    lines: "\u201CMust\u2019ve been my imagination\u2026\u201D"
+  - speakerName: ...
+    lines: "\"Ah... You're as beautiful as the day I saw you, my dear.\u201D"
