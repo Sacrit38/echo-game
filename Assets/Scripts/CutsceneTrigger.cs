@@ -7,6 +7,7 @@ public class CutsceneTrigger : MonoBehaviour
 {
     public string trigger = "Cutscene1";
     public float delay = 0.5f;
+    public int nextSceneIndex = 2;
     bool cutsceneStarted = false;
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player"))
@@ -21,7 +22,7 @@ public class CutsceneTrigger : MonoBehaviour
     {
         if (!TransScript.Instance.isPlaying && cutsceneStarted)
         {
-            SceneManager.LoadSceneAsync(2);
+            SceneManager.LoadSceneAsync(nextSceneIndex);
         }
     }
 
