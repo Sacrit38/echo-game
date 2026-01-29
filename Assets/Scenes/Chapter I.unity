@@ -1128,6 +1128,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4687756164530829157, guid: 527261747b1cc7c45bad5382b5709c25, type: 3}
   m_PrefabInstance: {fileID: 2016477983}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1722323131 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4166969272908021726, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+  m_PrefabInstance: {fileID: 7502171767533543780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1762108483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4687756164530829157, guid: 527261747b1cc7c45bad5382b5709c25, type: 3}
@@ -1590,7 +1595,7 @@ PrefabInstance:
       objectReference: {fileID: 1615881914}
     - target: {fileID: 425759532155107482, guid: 8dcf59299eb453040936a4540246a9e1, type: 3}
       propertyPath: end.x
-      value: 16.8
+      value: 34.1
       objectReference: {fileID: 0}
     - target: {fileID: 425759532155107482, guid: 8dcf59299eb453040936a4540246a9e1, type: 3}
       propertyPath: target
@@ -1784,7 +1789,7 @@ PrefabInstance:
       objectReference: {fileID: 1615881914}
     - target: {fileID: 1845278584828053537, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
       propertyPath: end.x
-      value: 16.8
+      value: 34.1
       objectReference: {fileID: 0}
     - target: {fileID: 1845278584828053537, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
       propertyPath: target
@@ -1844,7 +1849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252214509908143075, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5541530261812438662, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1862,6 +1867,46 @@ PrefabInstance:
       propertyPath: actionDelay
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1722323131}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: stepPerSeconds
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioPerSeconds
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f42c08be245b6104abc43620c42683d6, type: 3}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6def3f56d2b96aa41b646c2211564d5c, type: 3}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: d2e36faf999f0ab47b26a47c89d0a29b, type: 3}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: b7261f37f0fa00147aabece6a66e3684, type: 3}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 372635399d5ae1a46951d85c10088622, type: 3}
+    - target: {fileID: 6753323613025371615, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
+      propertyPath: audioClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 91c539b0e51b009418af387c7cb70e67, type: 3}
     - target: {fileID: 7090628897544450555, guid: be4f9d9942c7b1243b8849ccf3735f12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.5
@@ -1946,6 +1991,10 @@ PrefabInstance:
     - target: {fileID: 8242134941890291530, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
       propertyPath: clamped
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: useBounds
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8966117400459800259, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
       propertyPath: m_LocalPosition.x
