@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  stepInterval: 0.5
+  stepInterval: 0.7
   standbyInterval: 1
   playerSprite: {fileID: 0}
   shakeIntensity: 0.05

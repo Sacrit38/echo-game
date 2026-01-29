@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 1.45
       objectReference: {fileID: 0}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: stepInterval
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8966117400459800259, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.49

@@ -9,7 +9,7 @@ public class BasicPlayerMovement : MonoBehaviour
     private Animator anim; 
 
     [Header("Echolocation Settings")]
-    public float stepInterval = 0.5f; 
+    public float stepInterval = 1.2f; 
     private float stepTimer;
     private float defaultStepInterval; 
     
@@ -38,7 +38,7 @@ public class BasicPlayerMovement : MonoBehaviour
         
         defaultStepInterval = stepInterval;
         standbyTimer = standbyInterval; 
-        stepTimer = stepInterval;
+        stepTimer = stepInterval; 
 
         if (playerSprite == null) playerSprite = GetComponent<SpriteRenderer>();
     }
@@ -49,6 +49,7 @@ public class BasicPlayerMovement : MonoBehaviour
 
         if (anim != null) anim.SetFloat("Speed", moveInput.sqrMagnitude);
 
+       
         if (moveInput != Vector2.zero)
         {
             if (anim != null)
@@ -57,25 +58,26 @@ public class BasicPlayerMovement : MonoBehaviour
                 anim.SetFloat("MoveY", moveInput.y);
             }
             
-           
+      
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
                 TriggerFootstepEcho();
-                stepTimer = stepInterval;
+                stepTimer = stepInterval; 
             }
             standbyTimer = standbyInterval;
         }
         else
         {
-            stepTimer = 0; 
-            
+       
             standbyTimer -= Time.deltaTime;
             if (standbyTimer <= 0)
             {
                 TriggerFootstepEcho();
                 standbyTimer = standbyInterval;
             }
+    
+            stepTimer = Mathf.MoveTowards(stepTimer, 0.1f, Time.deltaTime); 
         }
 
         HandlePanicSystem();
@@ -93,19 +95,18 @@ public class BasicPlayerMovement : MonoBehaviour
 
     void HandlePanicSystem()
     {
-      
+     
         if (enemyTransform == null || !enemyTransform.gameObject.activeInHierarchy) 
         {
             StalkerAI stalker = FindObjectOfType<StalkerAI>();
             
-          
             if (stalker != null && stalker.gameObject.activeInHierarchy) 
             {
                 enemyTransform = stalker.transform;
             }
             else
             {
-               
+          
                 enemyTransform = null;
                 currentRippleColor = Color.white;
                 playerSprite.color = Color.white;
@@ -115,9 +116,8 @@ public class BasicPlayerMovement : MonoBehaviour
             }
         }
 
-     
-        currentRippleColor = Color.red;
-        playerSprite.color = Color.red;
+	playerSprite.color = new Color(1f, 0.8f, 0.8f, 1f); 
+        currentRippleColor = new Color(1f, 0.2f, 0.2f, 1f);
         stepInterval = 0.2f;
 
         Vector2 shakePoint = Random.insideUnitCircle * shakeIntensity;
@@ -129,20 +129,15 @@ public class BasicPlayerMovement : MonoBehaviour
         if (Camera.main != null)
         {
             Vector3 finalPos = Camera.main.transform.position;
-
-        
             if (useBounds)
             {
                 finalPos.x = Mathf.Clamp(finalPos.x, minX, maxX);
                 finalPos.y = Mathf.Clamp(finalPos.y, minY, maxY);
             }
-
-          
             if (enemyTransform != null)
             {
                 finalPos += currentShakeOffset;
             }
-
             Camera.main.transform.position = finalPos;
         }
     }
