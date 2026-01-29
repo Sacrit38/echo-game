@@ -17,9 +17,11 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (!isDialogueActive) return;
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (!isDialogueActive) {
+            dialogueUI.SetActive(false);
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
         {
             NextLine();
         }
@@ -63,8 +65,6 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         currentDialogue = null;
         isDialogueActive = false;
-
-        dialogueUI.SetActive(false);
 
         OnDialogueEnd?.Invoke();
         OnDialogueEnd = null;
