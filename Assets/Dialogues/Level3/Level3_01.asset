@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7e2035b9a407245b9ec2c35c06c3bb, type: 3}
+  m_Name: Level3_01
+  m_EditorClassIdentifier: 
+  lines:
+  - speakerName: Laurent
+    lines: "\u201DHey\u2026 you okay? You don't look like yourself.\u201D"
+  - speakerName: Laurent
+    lines: "\u201CSomething on your mind?\u201D"
+  - speakerName: Odele
+    lines: "\u201CNo, it\u2019s okay\u2026 Just something that's been bothering me
+      a bit lately.\u201D"
+  - speakerName: Laurent
+    lines: "\u201COdele, whatever it is \u2014 even if it's something small \u2014
+      it's okay tell me y'know?\u201D"
+  - speakerName: Odele
+    lines: "\u201CSigh\u2026 it\u2019s just\u2026 these past few days, I don\u2019t
+      feel exactly safe.\u201D"
+  - speakerName: Laurent
+    lines: "\u201C... What happened?\u201D"
+  - speakerName: Odele
+    lines: "\u201C... I think someone has been following me home. I keep hearing
+      like there's another pair of footsteps following mine.\u201D"
+  - speakerName: Laurent
+    lines: "\u201CWhat the fuck? Did you go to the police yet?\u201D"
+  - speakerName: Odele
+    lines: " \u201CYeah, yesterday I did just that and made an official report. They
+      said they'll look into it, but so far I haven't heard anything back.\u201D"
+  - speakerName: Laurent
+    lines: "\u201CUgh, they don't fucking take their work seriously sometimes.\u201D"
+  - speakerName: Laurent
+    lines: "\u201COdele, listen to me.\u201D"
+  - speakerName: Laurent
+    lines: " \u201CIf something happens, I want you to immediately call me. Okay?\u201D"
+  - speakerName: Odele
+    lines: "\u201COkay, okay\u2026\u201D"
+  - speakerName: Laurent
+    lines: "\u201CGood. Now, let's put our minds elsewhere\u2026\u201D"
+  - speakerName: Laurent
+    lines: " \"And get this girl's night started!\u201D"
