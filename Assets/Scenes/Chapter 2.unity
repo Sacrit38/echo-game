@@ -5631,30 +5631,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
-    - target: {fileID: 5834098407238287847, guid: bff6c169af3f70141846294e109ce7db, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -815
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834098407238287847, guid: bff6c169af3f70141846294e109ce7db, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -279
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882673620169435323, guid: bff6c169af3f70141846294e109ce7db, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1821.7047
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882673620169435323, guid: bff6c169af3f70141846294e109ce7db, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 79.0166
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882673620169435323, guid: bff6c169af3f70141846294e109ce7db, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 364
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882673620169435323, guid: bff6c169af3f70141846294e109ce7db, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -289
-      objectReference: {fileID: 0}
     - target: {fileID: 6081585135933180978, guid: bff6c169af3f70141846294e109ce7db, type: 3}
       propertyPath: m_fontAsset
       value: 

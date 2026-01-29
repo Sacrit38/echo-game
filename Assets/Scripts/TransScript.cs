@@ -77,6 +77,10 @@ public class TransScript : MonoBehaviour
                     case "activate":
                         item.value.SetActive(true);
                         break;
+                    case "deactivate":
+                        item.value.SetActive(false);
+                        break;
+                    
                     
                     default:
                         TextMeshProUGUI textMeshProUGUI;
