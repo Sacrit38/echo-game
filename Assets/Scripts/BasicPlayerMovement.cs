@@ -25,9 +25,12 @@ public class BasicPlayerMovement : MonoBehaviour
 
     public GameObject ripplePrefab;
 
-    [Header("Camera Bounds")]
-    public bool useBounds = true;
-    public float minX, maxX, minY, maxY;
+[Header("Camera Bounds")]
+public bool useBounds = true;
+public float minX, maxX, minY, maxY;
+
+[Header("Control")]
+public bool canMove = true;
     
     private Vector3 currentShakeOffset;
 
@@ -85,6 +88,12 @@ public class BasicPlayerMovement : MonoBehaviour
 
     void HandleInput()
     {
+        if (!canMove)
+        {
+            moveInput = Vector2.zero;
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -144,6 +153,7 @@ public class BasicPlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!canMove) return;
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
 

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7e2035b9a407245b9ec2c35c06c3bb, type: 3}
+  m_Name: Level2_02
+  m_EditorClassIdentifier: 
+  lines:
+  - speakerName: Lance
+    lines: "\u201CHeading back so soon, Odie?\u201D"
+  - speakerName: Odele
+    lines: "\u201CMmhm, how\u2019s your shift so far?\u201D"
+  - speakerName: Lance
+    lines: "It\u2019s alright. Nothing I can\u2019t handle on a Friday night.\u201D"
+  - speakerName: Lance
+    lines: "\u201CYou were great out there, by the way. Was that another original
+      piece you did?\u201D"
+  - speakerName: Odele
+    lines: "\u201CYeah! I wasn't sure if I should've played it since I think I can
+      improve the outro by adding more grace notes, but I hope you guys still liked
+      it\u2026\u201D"
+  - speakerName: Lance
+    lines: "\"Odele, everything you make so far has been incredible. Has and always
+      have been I should add\u2026\" "
+  - speakerName: Lance
+    lines: "\u201CAnyways, sure you don\u2019t want me to take you home? My shift
+      finishes in an hour and I even brought my motorcycle with me.\u201D"
+  - speakerName: Odele
+    lines: "\u201CIt\u2019s okay, I don\u2019t want to trouble you too much\u2026
+      Plus it\u2019s kinda faster if you walk anyways\u201D"
+  - speakerName: Lance
+    lines: "\u201CReally? You sure?\u201D"
+  - speakerName: Odele
+    lines: "\u201CReally, it\u2019s alright. Maybe another time.\u201D"
+  - speakerName: Odele
+    lines: "\u201CBye, Lance!\u201D"
+  - speakerName: Lance
+    lines: "\u201CBye, be careful alright\u2026\u201D"
