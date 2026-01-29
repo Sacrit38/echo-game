@@ -25,9 +25,9 @@ public class BasicPlayerMovement : MonoBehaviour
 
     public GameObject ripplePrefab;
 
-[Header("Camera Bounds")]
-public bool useBounds = true;
-public float minX, maxX, minY, maxY;
+    [Header("Camera Bounds")]
+    public bool useBounds = true;
+    public float minX, maxX, minY, maxY;
     
     private Vector3 currentShakeOffset;
 
@@ -37,7 +37,8 @@ public float minX, maxX, minY, maxY;
         anim = GetComponent<Animator>(); 
         
         defaultStepInterval = stepInterval;
-        standbyTimer = 0; 
+        standbyTimer = standbyInterval; 
+        stepTimer = stepInterval;
 
         if (playerSprite == null) playerSprite = GetComponent<SpriteRenderer>();
     }
@@ -46,24 +47,29 @@ public float minX, maxX, minY, maxY;
     {
         HandleInput();
 
-        anim.SetFloat("Speed", moveInput.sqrMagnitude);
+        if (anim != null) anim.SetFloat("Speed", moveInput.sqrMagnitude);
 
         if (moveInput != Vector2.zero)
         {
-            anim.SetFloat("MoveX", moveInput.x);
-            anim.SetFloat("MoveY", moveInput.y);
+            if (anim != null)
+            {
+                anim.SetFloat("MoveX", moveInput.x);
+                anim.SetFloat("MoveY", moveInput.y);
+            }
             
+           
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
                 TriggerFootstepEcho();
                 stepTimer = stepInterval;
             }
-            standbyTimer = standbyInterval; 
+            standbyTimer = standbyInterval;
         }
         else
         {
             stepTimer = 0; 
+            
             standbyTimer -= Time.deltaTime;
             if (standbyTimer <= 0)
             {
@@ -87,12 +93,20 @@ public float minX, maxX, minY, maxY;
 
     void HandlePanicSystem()
     {
-        if (enemyTransform == null) 
+      
+        if (enemyTransform == null || !enemyTransform.gameObject.activeInHierarchy) 
         {
             StalkerAI stalker = FindObjectOfType<StalkerAI>();
-            if (stalker) enemyTransform = stalker.transform;
+            
+          
+            if (stalker != null && stalker.gameObject.activeInHierarchy) 
+            {
+                enemyTransform = stalker.transform;
+            }
             else
             {
+               
+                enemyTransform = null;
                 currentRippleColor = Color.white;
                 playerSprite.color = Color.white;
                 stepInterval = defaultStepInterval;
@@ -101,43 +115,38 @@ public float minX, maxX, minY, maxY;
             }
         }
 
+     
         currentRippleColor = Color.red;
         playerSprite.color = Color.red;
         stepInterval = 0.2f;
 
-     
         Vector2 shakePoint = Random.insideUnitCircle * shakeIntensity;
         currentShakeOffset = new Vector3(shakePoint.x, shakePoint.y, 0);
     }
 
-   
     void LateUpdate()
     {
         if (Camera.main != null)
-    {
-       
-       if (Camera.main != null)
         {
             Vector3 finalPos = Camera.main.transform.position;
 
-           
+        
             if (useBounds)
             {
                 finalPos.x = Mathf.Clamp(finalPos.x, minX, maxX);
                 finalPos.y = Mathf.Clamp(finalPos.y, minY, maxY);
             }
 
-            
+          
             if (enemyTransform != null)
             {
                 finalPos += currentShakeOffset;
             }
 
-            
             Camera.main.transform.position = finalPos;
         }
     }
-}
+
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
