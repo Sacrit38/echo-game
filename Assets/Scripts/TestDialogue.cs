@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetDialogue : MonoBehaviour
+public class TestDialogue : MonoBehaviour
 {
     public DialogueData dialogueData;
 }
