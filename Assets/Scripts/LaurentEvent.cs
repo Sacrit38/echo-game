@@ -12,22 +12,26 @@ public class LaurentEvent : MonoBehaviour
     private bool hasArrived = false;
 
     [Header("Dialog Settings")]
-    public GameObject dialogPanel;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI messageText;
-    public string[] conversation;
-    private int dialogIndex = 0;
+    public DialogueData dialogueData;
+    public DialogueManager dialogueManager;
 
     [Header("Scene Transition")]
     public string nextSceneName;
 
     private Animator anim;
     private Rigidbody2D rb;
+    private BasicPlayerMovement playerMovement;
+
+    public float stopDistance = 1.8f;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+            playerMovement = player.GetComponent<BasicPlayerMovement>();
 
         if (anim != null) anim.SetBool("isWalking", false);
     }
@@ -37,11 +41,6 @@ public class LaurentEvent : MonoBehaviour
         if (isApproaching && !hasArrived)
         {
             MoveToMC();
-        }
-
-        if (hasArrived && Input.GetKeyDown(KeyCode.E))
-        {
-            DisplayNextLine();
         }
     }
 
@@ -57,9 +56,9 @@ public class LaurentEvent : MonoBehaviour
 
     void MoveToMC()
     {
-float distance = Vector2.Distance(transform.position, mcTarget.position);
+        float distance = Vector2.Distance(transform.position, mcTarget.position);
         
-        if (distance > 1.2f) 
+        if (distance > stopDistance) 
         {
             Vector2 direction = (mcTarget.position - transform.position).normalized;
             rb.velocity = direction * walkSpeed;
@@ -80,6 +79,8 @@ float distance = Vector2.Distance(transform.position, mcTarget.position);
         else
         {
             rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.bodyType = RigidbodyType2D.Kinematic;
             hasArrived = true;
 
             if (anim != null) anim.SetBool("isWalking", false);
@@ -91,27 +92,21 @@ float distance = Vector2.Distance(transform.position, mcTarget.position);
     IEnumerator ShowDialogWithDelay()
     {
         yield return new WaitForSeconds(0.5f);
-        dialogPanel.SetActive(true);
-        nameText.text = "Laurent";
-        DisplayNextLine();
-    }
 
-    void DisplayNextLine()
-    {
-        if (dialogIndex < conversation.Length)
-        {
-            messageText.text = conversation[dialogIndex];
-            dialogIndex++;
-        }
-        else
-        {
-            EndConversation();
-        }
+        if (playerMovement != null)
+            playerMovement.canMove = false;
+
+        dialogueManager.StartDialogue(dialogueData);
+        dialogueManager.OnDialogueEnd += EndConversation;
     }
 
     void EndConversation()
     {
-        dialogPanel.SetActive(false);
-        SceneManager.LoadScene(1);
+        dialogueManager.OnDialogueEnd -= EndConversation;
+
+        if (playerMovement != null)
+            playerMovement.canMove = true;
+
+        SceneManager.LoadScene(nextSceneName);
     }
 }

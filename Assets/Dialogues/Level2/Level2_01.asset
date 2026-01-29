@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: Level2_01
   m_EditorClassIdentifier: 
   lines:
-  - speakerName: Lune
+  - speakerName: Laurent
     lines: "\u201CHey! Great performance out there as usual.\u201D"
   - speakerName: Odele
     lines: "\u201CHehe thanks, Lune. Same thing for Sunday night?\u201D"
-  - speakerName: Lune
+  - speakerName: Laurent
     lines: "\u201CYep, just be here by 8 alright?\u201D"
-  - speakerName: Lune
+  - speakerName: Laurent
     lines: "\u201CHere\u2019s your pay and a bit of something as thanks, it\u2019s
       on the house.\u201D"
+  - speakerName: Odele
+    lines: " \u201COh, you\u2019re too kind\u2026\u201D"
+  - speakerName: Laurent
+    lines: "\u201CDon\u2019t mention it. Anything for our talented pianist!\u201D"
