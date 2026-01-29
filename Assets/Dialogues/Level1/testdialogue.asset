@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa7e2035b9a407245b9ec2c35c06c3bb, type: 3}
-  m_Name: Level4_02
+  m_Name: testdialogue
   m_EditorClassIdentifier: 
   lines:
   - speakerName: Odele
-    lines: "\u201CHuh...?\u201D"
+    lines: "\u201CAh, it\u2019s morning already.\u201D"
   - speakerName: Odele
-    lines: "\u201C... Petals?\u201D"
+    lines: "\u201C...\u201D"
   - speakerName: Odele
-    lines: "\u201C... Why is there-\u201D"
+    lines: "\u201CWhat to do, what to do\u2026 I got nothing planned and I\u2019m
+      practically free for today\u2026\u201D"
   - speakerName: Odele
-    lines: "\u201C... A rose\u2026? But there's no thorns-\u201D"
+    lines: "\u201C... Cross that, I need to buy more groceries now that I think about
+      it. The fridge is almost empty.\u201D"
   - speakerName: Odele
-    lines: " \u201C!\u201D"
-  - speakerName: Odele
-    lines: "\u201CNo! Stay away from me!\u201D"
+    lines: "\u201CTo the supermarket it is then.\u201D"

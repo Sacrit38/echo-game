@@ -22,9 +22,3 @@ MonoBehaviour:
   - speakerName: Lune
     lines: "\u201CHere\u2019s your pay and a bit of something as thanks, it\u2019s
       on the house.\u201D"
-  - speakerName: Odele
-    lines: "\u201COh, you\u2019re too kind Lune\u2026\u201D"
-  - speakerName: Lune
-    lines: "\u201CDon\u2019t mention it. Anything for our talented pianist!\u201D"
-  - speakerName: Odele
-    lines: "\u201CWell, time to head back.\u201D"

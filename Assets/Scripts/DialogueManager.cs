@@ -1,27 +1,20 @@
 using UnityEngine;
 using TMPro;
-using System;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Action OnDialogueEnd;
-
     [Header("UI References")]
-    public GameObject dialogueUI;
     public TMP_Text speakerText;
     public TMP_Text dialogueText;
 
     private DialogueData currentDialogue;
     private int currentLineIndex;
-    private bool isDialogueActive;
 
     void Update()
     {
-        if (!isDialogueActive) {
-            dialogueUI.SetActive(false);
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+        if (currentDialogue == null) return;
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             NextLine();
         }
@@ -29,13 +22,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(DialogueData dialogueData)
     {
-        if (isDialogueActive) return;
-
         currentDialogue = dialogueData;
         currentLineIndex = 0;
-        isDialogueActive = true;
-
-        dialogueUI.SetActive(true);
         DisplayLine();
     }
 
@@ -64,9 +52,6 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = "";
         dialogueText.text = "";
         currentDialogue = null;
-        isDialogueActive = false;
-
-        OnDialogueEnd?.Invoke();
-        OnDialogueEnd = null;
+        Debug.Log("Dialogue ended");
     }
 }
