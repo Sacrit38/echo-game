@@ -776,7 +776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &327398720
 Transform:
   m_ObjectHideFlags: 0
@@ -3092,7 +3092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1155378330
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3435,14 +3435,6 @@ PrefabInstance:
     - target: {fileID: 8554666756982782900, guid: 2e7920894d75a5e4c8a0ccfeb2d4be83, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9080547123504627900, guid: 2e7920894d75a5e4c8a0ccfeb2d4be83, type: 3}
-      propertyPath: m_text
-      value: Thursday, Inception
-      objectReference: {fileID: 0}
-    - target: {fileID: 9080547123504627900, guid: 2e7920894d75a5e4c8a0ccfeb2d4be83, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 255
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5844,11 +5836,11 @@ PrefabInstance:
     - target: {fileID: 6081585135933180978, guid: bff6c169af3f70141846294e109ce7db, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
     - target: {fileID: 6081585135933180978, guid: bff6c169af3f70141846294e109ce7db, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
     - target: {fileID: 6081585135933180978, guid: bff6c169af3f70141846294e109ce7db, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -5856,11 +5848,11 @@ PrefabInstance:
     - target: {fileID: 9221505286517566290, guid: bff6c169af3f70141846294e109ce7db, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
     - target: {fileID: 9221505286517566290, guid: bff6c169af3f70141846294e109ce7db, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
     - target: {fileID: 9221505286517566290, guid: bff6c169af3f70141846294e109ce7db, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
