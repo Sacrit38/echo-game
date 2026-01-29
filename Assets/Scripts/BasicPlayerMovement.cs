@@ -25,6 +25,14 @@ public class BasicPlayerMovement : MonoBehaviour
 
     public GameObject ripplePrefab;
 
+    [Header("Panic Audio")]
+    public AudioClip[] breathingSounds;
+    public AudioClip[] heartbeatSounds;
+    private AudioSource panicAudioSource;
+    private bool isInPanicMode = false;
+    private int breathingIndex = 0;
+    private int heartbeatIndex = 0;
+
     [Header("Camera Bounds")]
     public bool useBounds = true;
     public float minX, maxX, minY, maxY;
@@ -46,7 +54,9 @@ public class BasicPlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
         footstepAudioSource = GetComponent<AudioSource>();
+        panicAudioSource = gameObject.AddComponent<AudioSource>();
 
         currentFootsteps = concreteFootsteps;
         ShuffleFootsteps();
@@ -135,7 +145,12 @@ public class BasicPlayerMovement : MonoBehaviour
             }
             else
             {
-          
+                if (isInPanicMode)
+                {
+                    isInPanicMode = false;
+                    panicAudioSource.Stop();
+                }
+
                 enemyTransform = null;
                 currentRippleColor = Color.white;
                 playerSprite.color = Color.white;
@@ -145,7 +160,12 @@ public class BasicPlayerMovement : MonoBehaviour
             }
         }
 
-	playerSprite.color = new Color(1f, 0.8f, 0.8f, 1f); 
+        if (!panicAudioSource.isPlaying)
+        {
+            PlayNextPanicSound();
+        }
+
+        playerSprite.color = new Color(1f, 0.8f, 0.8f, 1f);
         currentRippleColor = new Color(1f, 0.2f, 0.2f, 1f);
         stepInterval = 0.2f;
 
@@ -229,6 +249,71 @@ public class BasicPlayerMovement : MonoBehaviour
                 footstepIndex = 0;
                 ShuffleFootsteps();
             }
+        }
+    }
+
+    void ShufflePanicSounds()
+    {
+        if (breathingSounds != null && breathingSounds.Length > 0)
+        {
+            for (int i = 0; i < breathingSounds.Length; i++)
+            {
+                int rand = Random.Range(i, breathingSounds.Length);
+                AudioClip temp = breathingSounds[i];
+                breathingSounds[i] = breathingSounds[rand];
+                breathingSounds[rand] = temp;
+            }
+        }
+
+        if (heartbeatSounds != null && heartbeatSounds.Length > 0)
+        {
+            for (int i = 0; i < heartbeatSounds.Length; i++)
+            {
+                int rand = Random.Range(i, heartbeatSounds.Length);
+                AudioClip temp = heartbeatSounds[i];
+                heartbeatSounds[i] = heartbeatSounds[rand];
+                heartbeatSounds[rand] = temp;
+            }
+        }
+
+        breathingIndex = 0;
+        heartbeatIndex = 0;
+    }
+
+    void PlayNextPanicSound()
+    {
+        bool playBreathing = Random.value > 0.5f;
+
+        if (playBreathing && breathingSounds != null && breathingSounds.Length > 0)
+        {
+            panicAudioSource.PlayOneShot(breathingSounds[breathingIndex]);
+            breathingIndex++;
+            if (breathingIndex >= breathingSounds.Length)
+            {
+                breathingIndex = 0;
+                ShuffleArray(breathingSounds);
+            }
+        }
+        else if (heartbeatSounds != null && heartbeatSounds.Length > 0)
+        {
+            panicAudioSource.PlayOneShot(heartbeatSounds[heartbeatIndex]);
+            heartbeatIndex++;
+            if (heartbeatIndex >= heartbeatSounds.Length)
+            {
+                heartbeatIndex = 0;
+                ShuffleArray(heartbeatSounds);
+            }
+        }
+    }
+
+    void ShuffleArray(AudioClip[] array)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            int rand = Random.Range(i, array.Length);
+            AudioClip temp = array[i];
+            array[i] = array[rand];
+            array[rand] = temp;
         }
     }
 }
