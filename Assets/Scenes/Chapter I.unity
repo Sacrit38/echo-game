@@ -2015,8 +2015,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8149594936652199120, guid: 2e7920894d75a5e4c8a0ccfeb2d4be83, type: 3}
+      propertyPath: soundPairs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149594936652199120, guid: 2e7920894d75a5e4c8a0ccfeb2d4be83, type: 3}
       propertyPath: actionPairs.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149594936652199120, guid: 2e7920894d75a5e4c8a0ccfeb2d4be83, type: 3}
+      propertyPath: soundPairs.Array.data[2].value
+      value: 
+      objectReference: {fileID: 8300000, guid: d4b8b5f802bbd9b48bce3cd7473af6e8, type: 3}
+    - target: {fileID: 8149594936652199120, guid: 2e7920894d75a5e4c8a0ccfeb2d4be83, type: 3}
+      propertyPath: soundPairs.Array.data[2].trigger
+      value: Cutscene1
       objectReference: {fileID: 0}
     - target: {fileID: 8149594936652199120, guid: 2e7920894d75a5e4c8a0ccfeb2d4be83, type: 3}
       propertyPath: actionPairs.Array.data[1].trigger
