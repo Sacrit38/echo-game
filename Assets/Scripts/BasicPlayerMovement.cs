@@ -9,7 +9,7 @@ public class BasicPlayerMovement : MonoBehaviour
     private Animator anim; 
 
     [Header("Echolocation Settings")]
-    public float stepInterval = 1.2f; 
+    public float stepInterval = 1.2f;
     private float stepTimer;
     private float defaultStepInterval; 
     
@@ -33,16 +33,26 @@ public class BasicPlayerMovement : MonoBehaviour
 
     [Header("Control")]
     public bool canMove = true;
-
+    [Header("Footstep Audio")]
+    public AudioClip[] concreteFootsteps;
+    public AudioClip[] woodFootsteps;
+    private AudioClip[] currentFootsteps;
+    private int footstepIndex = 0;
+    private AudioSource footstepAudioSource;
+    private bool wasMovingLastFrame = false;
+    private bool inputJustPressed = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>(); 
-        
+        anim = GetComponent<Animator>();
+        footstepAudioSource = GetComponent<AudioSource>();
+
+        currentFootsteps = concreteFootsteps;
+        ShuffleFootsteps();
+
         defaultStepInterval = stepInterval;
-        standbyTimer = standbyInterval; 
-        stepTimer = stepInterval; 
+        standbyTimer = standbyInterval;
 
         if (playerSprite == null) playerSprite = GetComponent<SpriteRenderer>();
     }
@@ -50,6 +60,14 @@ public class BasicPlayerMovement : MonoBehaviour
     void Update()
     {
         HandleInput();
+
+        // audio
+        if (moveInput != Vector2.zero && !wasMovingLastFrame)
+        {
+            PlayFootstepSound();
+            stepTimer = stepInterval;
+        }
+        wasMovingLastFrame = (moveInput != Vector2.zero);
 
         if (anim != null) anim.SetFloat("Speed", moveInput.sqrMagnitude);
 
@@ -66,6 +84,7 @@ public class BasicPlayerMovement : MonoBehaviour
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
+                PlayFootstepSound();
                 TriggerFootstepEcho();
                 stepTimer = stepInterval; 
             }
@@ -158,6 +177,20 @@ public class BasicPlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
 
+    public void SetGroundType(string type)
+    {
+        Debug.Log("SetGroundType called with: " + type); // ADD THIS
+        AudioClip[] newFootsteps = (type == "wood") ? woodFootsteps : concreteFootsteps;
+
+        if (newFootsteps != currentFootsteps)
+        {
+            currentFootsteps = newFootsteps;
+            footstepIndex = 0;
+            ShuffleFootsteps();
+            Debug.Log("Ground type changed! Current footsteps: " + currentFootsteps.Length); // ADD THIS
+        }
+    }
+
 
     void TriggerFootstepEcho()
     {
@@ -168,6 +201,34 @@ public class BasicPlayerMovement : MonoBehaviour
             SpriteRenderer rippleSR = ripple.GetComponent<SpriteRenderer>();
             if (rippleSR != null) rippleSR.color = currentRippleColor;
             Destroy(ripple, 1.0f);
+        }
+    }
+
+    void ShuffleFootsteps()
+    {
+        if (currentFootsteps == null || currentFootsteps.Length == 0) return;
+
+        for (int i = 0; i < currentFootsteps.Length; i++)
+        {
+            int rand = Random.Range(i, currentFootsteps.Length);
+            AudioClip temp = currentFootsteps[i];
+            currentFootsteps[i] = currentFootsteps[rand];
+            currentFootsteps[rand] = temp;
+        }
+    }
+
+    void PlayFootstepSound()
+    {
+        if (currentFootsteps != null && currentFootsteps.Length > 0 && footstepAudioSource != null)
+        {
+            footstepAudioSource.PlayOneShot(currentFootsteps[footstepIndex]);
+
+            footstepIndex++;
+            if (footstepIndex >= currentFootsteps.Length)
+            {
+                footstepIndex = 0;
+                ShuffleFootsteps();
+            }
         }
     }
 }

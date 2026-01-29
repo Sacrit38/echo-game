@@ -3399,6 +3399,7 @@ GameObject:
   - component: {fileID: 937037077}
   - component: {fileID: 937037079}
   - component: {fileID: 937037078}
+  - component: {fileID: 937037080}
   m_Layer: 0
   m_Name: Maze Area
   m_TagString: Untagged
@@ -3421,6 +3422,8 @@ Transform:
   m_Children:
   - {fileID: 1189666294}
   - {fileID: 665874479}
+  - {fileID: 1510081677}
+  - {fileID: 762876740}
   m_Father: {fileID: 468035604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937037078
@@ -3534,6 +3537,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &937037080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937037076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1e2f3f9ee9123439a2b03da4f05120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundType: concrete
 --- !u!4 &998773113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4687756164530829157, guid: ebdec6cb339495f47a5f8d73f4d18e88, type: 3}
@@ -7374,6 +7390,50 @@ PrefabInstance:
       propertyPath: useBounds
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: woodFootsteps.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: woodFootsteps.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e57d584f81d5aee4fa9fe984134fb18c, type: 3}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: woodFootsteps.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 09796c92b28048a41ad66e740bb2d504, type: 3}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: woodFootsteps.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7cdc95367ddaf7b47a4fc57649f410d1, type: 3}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: woodFootsteps.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: bbf4a8ee457c7734d8b56f9ac83bbebd, type: 3}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: concreteFootsteps.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: concreteFootsteps.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 279b498df5021a843b71f46cc89e10ed, type: 3}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: concreteFootsteps.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 730554ad000cfc94995e4542fbee0851, type: 3}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: concreteFootsteps.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 644706a82853855419203f2e996b0d87, type: 3}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: concreteFootsteps.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: b229e7ae8b8840e4db4ff8fccabd3369, type: 3}
+    - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
+      propertyPath: concreteFootsteps.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 38f64a89427fb864e9113bb847b5380e, type: 3}
     - target: {fileID: 8966117400459800259, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

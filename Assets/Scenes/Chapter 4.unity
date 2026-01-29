@@ -563,7 +563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4209233641152089525, guid: 8dcf59299eb453040936a4540246a9e1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1596,7 +1596,7 @@ MonoBehaviour:
   m_text: Press (E) to continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
-  m_sharedMaterial: {fileID: -4733322335013060283, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
+  m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1684,7 +1684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5598115600540744212, guid: bd33f9de3448f0e4381751dadfaf9fdb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6422881393653879407, guid: bd33f9de3448f0e4381751dadfaf9fdb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1791,7 +1791,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
-  m_sharedMaterial: {fileID: -4733322335013060283, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
+  m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2108,7 +2108,7 @@ MonoBehaviour:
   m_text: 'Odele :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
-  m_sharedMaterial: {fileID: -4733322335013060283, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
+  m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2398,7 +2398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1640506432
 MonoBehaviour:
   m_ObjectHideFlags: 0

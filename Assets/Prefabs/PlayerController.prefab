@@ -479,7 +479,7 @@ MonoBehaviour:
     To interact with something'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
-  m_sharedMaterial: {fileID: -4733322335013060283, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
+  m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1088,7 +1088,7 @@ MonoBehaviour:
     To move the character'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
-  m_sharedMaterial: {fileID: -4733322335013060283, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
+  m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1242,6 +1242,18 @@ MonoBehaviour:
   maxX: 0
   minY: 0
   maxY: 0
+  canMove: 1
+  concreteFootsteps:
+  - {fileID: 8300000, guid: 279b498df5021a843b71f46cc89e10ed, type: 3}
+  - {fileID: 8300000, guid: 730554ad000cfc94995e4542fbee0851, type: 3}
+  - {fileID: 8300000, guid: 644706a82853855419203f2e996b0d87, type: 3}
+  - {fileID: 8300000, guid: b229e7ae8b8840e4db4ff8fccabd3369, type: 3}
+  - {fileID: 8300000, guid: 38f64a89427fb864e9113bb847b5380e, type: 3}
+  woodFootsteps:
+  - {fileID: 8300000, guid: e57d584f81d5aee4fa9fe984134fb18c, type: 3}
+  - {fileID: 8300000, guid: 09796c92b28048a41ad66e740bb2d504, type: 3}
+  - {fileID: 8300000, guid: 7cdc95367ddaf7b47a4fc57649f410d1, type: 3}
+  - {fileID: 8300000, guid: bbf4a8ee457c7734d8b56f9ac83bbebd, type: 3}
 --- !u!61 &4541870340243325339
 BoxCollider2D:
   m_ObjectHideFlags: 0
