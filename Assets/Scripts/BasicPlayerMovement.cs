@@ -28,6 +28,9 @@ public class BasicPlayerMovement : MonoBehaviour
 [Header("Camera Bounds")]
 public bool useBounds = true;
 public float minX, maxX, minY, maxY;
+
+[Header("Control")]
+public bool canMove = true;
     
     private Vector3 currentShakeOffset;
 
@@ -77,6 +80,12 @@ public float minX, maxX, minY, maxY;
 
     void HandleInput()
     {
+        if (!canMove)
+        {
+            moveInput = Vector2.zero;
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -140,6 +149,7 @@ public float minX, maxX, minY, maxY;
 }
     void FixedUpdate()
     {
+        if (!canMove) return;
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
 

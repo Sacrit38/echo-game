@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa7e2035b9a407245b9ec2c35c06c3bb, type: 3}
-  m_Name: testdialogue
+  m_Name: Level1_01
   m_EditorClassIdentifier: 
   lines:
   - speakerName: Odele
