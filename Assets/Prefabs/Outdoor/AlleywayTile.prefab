@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8819408220893318249}
   - component: {fileID: -8803140177793181330}
   - component: {fileID: 4337865305564608616}
+  - component: {fileID: 2449812582854018458}
   m_Layer: 0
   m_Name: AlleywayTile
   m_TagString: Untagged
@@ -231,6 +232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: 9b96d643d8e80e64484d116d75e7204a, type: 3}
+  - {fileID: 8300000, guid: b431fa2c55d2d7e479b95a1515efc7b8, type: 3}
+  - {fileID: 8300000, guid: 6cfe19757046b154c89176761922802c, type: 3}
+  - {fileID: 8300000, guid: 79169ccb34b4b5d46a4861546d031192, type: 3}
   audioSource: {fileID: 8819408220893318249}
 --- !u!82 &4337865305564608616
 AudioSource:
@@ -328,6 +332,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2449812582854018458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5143510042428929963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1e2f3f9ee9123439a2b03da4f05120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundType: concrete
 --- !u!1 &8038528648201796267
 GameObject:
   m_ObjectHideFlags: 0

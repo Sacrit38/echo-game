@@ -24,4 +24,27 @@ MonoBehaviour:
     lines: " \u201C... Inside your house?\u201D"
   - speakerName: Odele
     lines: "\u201CYes. I heard my floorboards creaking and they even left something
-      on my floor. Someone was inside of my house officer.\u201D"
+      on my floor.\""
+  - speakerName: Odele
+    lines: "\"Someone was inside of my house officer.\u201D"
+  - speakerName: Officer
+    lines: "\u201CAlright\u2026 I see your previous report here.\u201D"
+  - speakerName: Officer
+    lines: "\u201CWe did have patrol units pass through your neighborhood these past
+      couple of nights...\""
+  - speakerName: Officer
+    lines: "\"...but they didn\u2019t see anyone matching suspicious behavior so
+      far.\u201D"
+  - speakerName: Officer
+    lines: "\u201CBut they were there\u2026 I know what I heard.\u201D"
+  - speakerName: Officer
+    lines: "\u201CI understand you\u2019re scared, miss. But currently, we don\u2019t
+      have any physical evidence of a break-in or a suspect.\u201D"
+  - speakerName: Odele
+    lines: "\u201CThey were in my house!\u201D"
+  - speakerName: Officer
+    lines: "\u201CIf someone had forced entry, there would usually be signs. A broken
+      lock, a window, something disturbed.\u201D"
+  - speakerName: Officer
+    lines: "\u201CIf someone had forced entry, there would usually be signs. A broken
+      lock, a window, something disturbed.\u201D"
