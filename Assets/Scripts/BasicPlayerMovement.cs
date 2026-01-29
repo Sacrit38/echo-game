@@ -11,42 +11,41 @@ public class BasicPlayerMovement : MonoBehaviour
     [Header("Echolocation Settings")]
     public float stepInterval = 0.5f; 
     private float stepTimer;
+    private float defaultStepInterval; 
     
     [Header("Standby Settings")]
     public float standbyInterval = 2.0f; 
     private float standbyTimer;
 
+    [Header("Panic Settings")]
+    public SpriteRenderer playerSprite; 
+    private Transform enemyTransform;
+    private Color currentRippleColor = Color.white;
+    public float shakeIntensity = 0.05f; 
+
     public GameObject ripplePrefab;
+
+[Header("Camera Bounds")]
+public bool useBounds = true;
+public float minX, maxX, minY, maxY;
+    
+    private Vector3 currentShakeOffset;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>(); 
+        
+        defaultStepInterval = stepInterval;
         standbyTimer = 0; 
+
+        if (playerSprite == null) playerSprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-     
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        HandleInput();
 
-        if (horizontal != 0) 
-        {
-      
-            moveInput = new Vector2(horizontal, 0);
-        }
-        else if (vertical != 0) 
-        {
-       
-            moveInput = new Vector2(0, vertical);
-        }
-        else 
-        {
-            moveInput = Vector2.zero;
-        }
-
-        
         anim.SetFloat("Speed", moveInput.sqrMagnitude);
 
         if (moveInput != Vector2.zero)
@@ -54,7 +53,6 @@ public class BasicPlayerMovement : MonoBehaviour
             anim.SetFloat("MoveX", moveInput.x);
             anim.SetFloat("MoveY", moveInput.y);
             
-           
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
@@ -65,7 +63,6 @@ public class BasicPlayerMovement : MonoBehaviour
         }
         else
         {
-         
             stepTimer = 0; 
             standbyTimer -= Time.deltaTime;
             if (standbyTimer <= 0)
@@ -74,11 +71,75 @@ public class BasicPlayerMovement : MonoBehaviour
                 standbyTimer = standbyInterval;
             }
         }
+
+        HandlePanicSystem();
     }
 
-    void FixedUpdate()
+    void HandleInput()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        if (horizontal != 0) moveInput = new Vector2(horizontal, 0);
+        else if (vertical != 0) moveInput = new Vector2(0, vertical);
+        else moveInput = Vector2.zero;
+    }
+
+    void HandlePanicSystem()
+    {
+        if (enemyTransform == null) 
+        {
+            StalkerAI stalker = FindObjectOfType<StalkerAI>();
+            if (stalker) enemyTransform = stalker.transform;
+            else
+            {
+                currentRippleColor = Color.white;
+                playerSprite.color = Color.white;
+                stepInterval = defaultStepInterval;
+                currentShakeOffset = Vector3.zero;
+                return;
+            }
+        }
+
+        currentRippleColor = Color.red;
+        playerSprite.color = Color.red;
+        stepInterval = 0.2f;
+
+     
+        Vector2 shakePoint = Random.insideUnitCircle * shakeIntensity;
+        currentShakeOffset = new Vector3(shakePoint.x, shakePoint.y, 0);
+    }
+
+   
+    void LateUpdate()
+    {
+        if (Camera.main != null)
     {
        
+       if (Camera.main != null)
+        {
+            Vector3 finalPos = Camera.main.transform.position;
+
+           
+            if (useBounds)
+            {
+                finalPos.x = Mathf.Clamp(finalPos.x, minX, maxX);
+                finalPos.y = Mathf.Clamp(finalPos.y, minY, maxY);
+            }
+
+            
+            if (enemyTransform != null)
+            {
+                finalPos += currentShakeOffset;
+            }
+
+            
+            Camera.main.transform.position = finalPos;
+        }
+    }
+}
+    void FixedUpdate()
+    {
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -88,6 +149,8 @@ public class BasicPlayerMovement : MonoBehaviour
         {
             GameObject ripple = Instantiate(ripplePrefab, transform.position, Quaternion.identity, this.transform);
             ripple.name = "AttachedRipple";
+            SpriteRenderer rippleSR = ripple.GetComponent<SpriteRenderer>();
+            if (rippleSR != null) rippleSR.color = currentRippleColor;
             Destroy(ripple, 1.0f);
         }
     }
