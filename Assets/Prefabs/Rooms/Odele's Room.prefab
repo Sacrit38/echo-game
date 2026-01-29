@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 2411452510527605237}
   - component: {fileID: 4694018171747089948}
   - component: {fileID: 6652539237067789608}
+  - component: {fileID: 5571219263927242279}
   m_Layer: 0
   m_Name: Odele's Room
   m_TagString: Untagged
@@ -694,6 +695,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5571219263927242279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4209233641152089525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1e2f3f9ee9123439a2b03da4f05120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundType: wood
 --- !u!1 &4774048414836112948
 GameObject:
   m_ObjectHideFlags: 0
