@@ -9,18 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 604b1a51f57b00144b27ff02ccb81367
   - enabled: 1
-    path: Assets/Scenes/Gameplay.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
     path: Assets/Scenes/Chapter I.unity
     guid: 678121ed4cb1fc347bc61e932b9dae5a
   - enabled: 1
     path: Assets/Scenes/Chapter 2.unity
     guid: ec132f23cf3c2224b86ddff899e3cde9
   - enabled: 1
+    path: Assets/Scenes/Chapter 3.unity
+    guid: 4b9c4430c85c03a44ad58298a4dae569
+  - enabled: 1
     path: Assets/Scenes/Chapter 4.unity
     guid: 03e4f3cad2c5710479874d5c810e1ef2
   - enabled: 1
     path: Assets/Scenes/Chapter 4 Outdoor.unity
     guid: 30de46180686c1f488744ccd31d79772
+  - enabled: 1
+    path: Assets/Scenes/Gameplay.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}

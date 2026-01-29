@@ -9,7 +9,7 @@ public class BasicPlayerMovement : MonoBehaviour
     private Animator anim; 
 
     [Header("Echolocation Settings")]
-    public float stepInterval = 0.5f; 
+    public float stepInterval = 1.2f; 
     private float stepTimer;
     private float defaultStepInterval; 
     
@@ -40,7 +40,8 @@ public bool canMove = true;
         anim = GetComponent<Animator>(); 
         
         defaultStepInterval = stepInterval;
-        standbyTimer = 0; 
+        standbyTimer = standbyInterval; 
+        stepTimer = stepInterval; 
 
         if (playerSprite == null) playerSprite = GetComponent<SpriteRenderer>();
     }
@@ -49,30 +50,37 @@ public bool canMove = true;
     {
         HandleInput();
 
-        anim.SetFloat("Speed", moveInput.sqrMagnitude);
+        if (anim != null) anim.SetFloat("Speed", moveInput.sqrMagnitude);
 
+       
         if (moveInput != Vector2.zero)
         {
-            anim.SetFloat("MoveX", moveInput.x);
-            anim.SetFloat("MoveY", moveInput.y);
+            if (anim != null)
+            {
+                anim.SetFloat("MoveX", moveInput.x);
+                anim.SetFloat("MoveY", moveInput.y);
+            }
             
+      
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
                 TriggerFootstepEcho();
-                stepTimer = stepInterval;
+                stepTimer = stepInterval; 
             }
-            standbyTimer = standbyInterval; 
+            standbyTimer = standbyInterval;
         }
         else
         {
-            stepTimer = 0; 
+       
             standbyTimer -= Time.deltaTime;
             if (standbyTimer <= 0)
             {
                 TriggerFootstepEcho();
                 standbyTimer = standbyInterval;
             }
+    
+            stepTimer = Mathf.MoveTowards(stepTimer, 0.1f, Time.deltaTime); 
         }
 
         HandlePanicSystem();
@@ -96,12 +104,19 @@ public bool canMove = true;
 
     void HandlePanicSystem()
     {
-        if (enemyTransform == null) 
+     
+        if (enemyTransform == null || !enemyTransform.gameObject.activeInHierarchy) 
         {
             StalkerAI stalker = FindObjectOfType<StalkerAI>();
-            if (stalker) enemyTransform = stalker.transform;
+            
+            if (stalker != null && stalker.gameObject.activeInHierarchy) 
+            {
+                enemyTransform = stalker.transform;
+            }
             else
             {
+          
+                enemyTransform = null;
                 currentRippleColor = Color.white;
                 playerSprite.color = Color.white;
                 stepInterval = defaultStepInterval;
@@ -110,43 +125,32 @@ public bool canMove = true;
             }
         }
 
-        currentRippleColor = Color.red;
-        playerSprite.color = Color.red;
+	playerSprite.color = new Color(1f, 0.8f, 0.8f, 1f); 
+        currentRippleColor = new Color(1f, 0.2f, 0.2f, 1f);
         stepInterval = 0.2f;
 
-     
         Vector2 shakePoint = Random.insideUnitCircle * shakeIntensity;
         currentShakeOffset = new Vector3(shakePoint.x, shakePoint.y, 0);
     }
 
-   
     void LateUpdate()
     {
         if (Camera.main != null)
-    {
-       
-       if (Camera.main != null)
         {
             Vector3 finalPos = Camera.main.transform.position;
-
-           
             if (useBounds)
             {
                 finalPos.x = Mathf.Clamp(finalPos.x, minX, maxX);
                 finalPos.y = Mathf.Clamp(finalPos.y, minY, maxY);
             }
-
-            
             if (enemyTransform != null)
             {
                 finalPos += currentShakeOffset;
             }
-
-            
             Camera.main.transform.position = finalPos;
         }
     }
-}
+
     void FixedUpdate()
     {
         if (!canMove) return;
