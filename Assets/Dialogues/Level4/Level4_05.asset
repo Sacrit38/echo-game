@@ -12,4 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7e2035b9a407245b9ec2c35c06c3bb, type: 3}
   m_Name: Level4_05
   m_EditorClassIdentifier: 
-  lines: []
+  lines:
+  - speakerName: Odele
+    lines: "\u201CWhy\u2026\u201D"
+  - speakerName: Odele
+    lines: "\u201CWhy is this happening to me\u2026\u201D"
+  - speakerName: Odele
+    lines: "\u201CGod\u2026 Please\u2026 I\u2019m so scared\u2026\u201D"
+  - speakerName: Odele
+    lines: "\u201CWhy can\u2019t they just fucking believe me\u2026\u201D"
+  - speakerName: Odele
+    lines: "\u201C... Do I have to die first before they all believe\u2026?\u201D"
+  - speakerName: Odele
+    lines: "\u201CSomeone\u2026 Anyone\u2026 Please help me\u2026\u201D"
+  - speakerName: Odele
+    lines: "\u201CI don\u2019t want to be alone\u2026\u201D"
