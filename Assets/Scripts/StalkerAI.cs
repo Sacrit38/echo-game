@@ -7,19 +7,21 @@ public class StalkerAI : MonoBehaviour
     private Transform playerTransform;
     private Rigidbody2D rb;
     private Vector2 moveDirection;
+    private BasicPlayerMovement playerMovement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null) playerTransform = player.transform;
+        playerMovement = player.GetComponent<BasicPlayerMovement>();
     }
 
     void Update()
     {
-        if (playerTransform != null)
+        if (playerTransform != null && playerMovement != null)
         {
-           
+            if (!playerMovement.canMove) return;
             Vector2 direction = (Vector2)playerTransform.position - (Vector2)transform.position;
             direction.Normalize();
             moveDirection = direction;
