@@ -1089,7 +1089,6 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
-  m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1238,6 +1237,19 @@ MonoBehaviour:
   playerSprite: {fileID: 0}
   shakeIntensity: 0.05
   ripplePrefab: {fileID: 7567598025232605937, guid: 3e38b3efed559a948a20997adaba10e5, type: 3}
+  breathingSounds:
+  - {fileID: 8300000, guid: d2b4ba6d40faeec4596529e53263ed43, type: 3}
+  - {fileID: 8300000, guid: 481203a8274b68943bccbd3ebeb970ba, type: 3}
+  - {fileID: 8300000, guid: 062af8da02160194b93a75dd57c0b40a, type: 3}
+  - {fileID: 8300000, guid: a5089cfe40af7de4b948c58bc4240e92, type: 3}
+  - {fileID: 8300000, guid: 3ea469311cd24dc409b0d72cf1e44f24, type: 3}
+  - {fileID: 8300000, guid: e28965713e8d8ef4798946950aa22d64, type: 3}
+  - {fileID: 8300000, guid: 82a0c2fd3a7081941a2c8d493596883d, type: 3}
+  heartbeatSounds:
+  - {fileID: 8300000, guid: d00453ff775e08c4286063e643822636, type: 3}
+  - {fileID: 8300000, guid: 3620967509a608049b68f1cc8bc889fb, type: 3}
+  - {fileID: 8300000, guid: 064f96e06763c03418077d9068a9b06a, type: 3}
+  - {fileID: 8300000, guid: 60a4e1715f4357f458c5884932ef03cb, type: 3}
   useBounds: 1
   minX: 0
   maxX: 0
