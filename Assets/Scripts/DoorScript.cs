@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     public Transform target, player;
+    public bool needKeyPress = true;
     
     [Header("Camera Constraint")]
     public SmoothCamera cams;
@@ -31,7 +32,7 @@ public class DoorScript : MonoBehaviour
 
     void Update()
     {
-        if (interact && Input.GetButtonDown("Fire1") && !TransScript.Instance.isPlaying)
+        if (interact && (Input.GetButtonDown("Fire1") || !needKeyPress) && !TransScript.Instance.isPlaying)
         {
             TransScript.Instance.isPlaying = true;
             StartCoroutine(SceneTransition());
