@@ -6,7 +6,10 @@ public class StalkerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-           
+       
+            collision.gameObject.SetActive(false); 
+
+          
             GameOverHandler handler = FindObjectOfType<GameOverHandler>(true);
             if (handler != null)
             {
@@ -14,11 +17,12 @@ public class StalkerCollision : MonoBehaviour
             }
             else
             {
-             
                 UnityEngine.SceneManagement.SceneManager.LoadScene(
                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
                 );
             }
+
+         
         }
     }
 }
