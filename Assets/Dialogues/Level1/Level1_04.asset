@@ -14,18 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speakerName: Odele
-    lines: "\u201CRoses\u2026 I remember Briar gave me one once at our 6th-grade
-      talent show.\u201D"
-  - speakerName: Odele
-    lines: "\u201CIt was so sweet of her, she couldn't stop gushing over my performance,
-      hehe.\u201D"
+    lines: "\u201CHello?\u201D"
   - speakerName: Odele
     lines: "\u201C...\u201D"
   - speakerName: Odele
-    lines: "\u201CI wonder how she\u2019s now\u2026 She would've grown up so much,
-      I'm not sure if I\u2019ll be able to recognize her voice\u2026\" "
-  - speakerName: Odele
-    lines: "\u201CI wonder how she\u2019s now\u2026 She would've grown up so much,
-      I'm not sure if I\u2019ll be able to recognize her voice\u2026\" "
-  - speakerName: Odele
-    lines: "\u201CI kinda can't wait to meet her this weekend.\u201D"
+    lines: "\u201CMust\u2019ve been my imagination\u2026\u201D"

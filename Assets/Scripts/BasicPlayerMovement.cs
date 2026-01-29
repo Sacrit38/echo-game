@@ -31,6 +31,10 @@ public class BasicPlayerMovement : MonoBehaviour
     
     private Vector3 currentShakeOffset;
 
+    [Header("Control")]
+    public bool canMove = true;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -85,12 +89,18 @@ public class BasicPlayerMovement : MonoBehaviour
 
     void HandleInput()
     {
+        if (!canMove)
+        {
+            moveInput = Vector2.zero; // stop player from moving
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
         if (horizontal != 0) moveInput = new Vector2(horizontal, 0);
         else if (vertical != 0) moveInput = new Vector2(0, vertical);
-        else moveInput = Vector2.zero;
+         else moveInput = Vector2.zero;
     }
 
     void HandlePanicSystem()
@@ -144,8 +154,10 @@ public class BasicPlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!canMove) return;
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
+
 
     void TriggerFootstepEcho()
     {
