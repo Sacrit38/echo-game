@@ -246,7 +246,7 @@ MonoBehaviour:
   m_text: Chapter 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aa5d9883f2f2d7a41bcf70a0d25d3760, type: 2}
-  m_sharedMaterial: {fileID: 3444424837792153942, guid: aa5d9883f2f2d7a41bcf70a0d25d3760, type: 2}
+  m_sharedMaterial: {fileID: 4473839364103192210, guid: aa5d9883f2f2d7a41bcf70a0d25d3760, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
