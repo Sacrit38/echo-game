@@ -2896,6 +2896,16 @@ MonoBehaviour:
   - '"Someone... Anyone... Please help me..."'
   - '"Someone...."'
   - '"I don''t want to be alone..."'
+  - '"*knocking sounds'
+  - 'Unknown voice : "...Odie?"'
+  - 'Odele : "Briar...?"'
+  - 'Odele : "Is that really you... ?"'
+  - 'Briar : "I wanted to give you a little birthday surprise by coming earlier...
+    but my god... you look like shit..."'
+  - 'Briar : "Shh.. Shh... It''s okay now..."'
+  - 'Briar : "I''m here."'
+  - 'Briar : "You don''t have to worry about a thing..."'
+  - 'Briar : "... And I won;t leave your side, ever again."'
   typingSpeed: 0.05
   fadeSpeed: 1.5
   playerMovement: {fileID: 975679210}
