@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1127383717989136783}
   - component: {fileID: 3788298293224378256}
   - component: {fileID: 6014413996712240906}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ MonoBehaviour:
     To interact with something'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
-  m_sharedMaterial: {fileID: -4733322335013060283, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
+  m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1088,7 +1088,7 @@ MonoBehaviour:
     To move the character'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
-  m_sharedMaterial: {fileID: -4733322335013060283, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
+  m_sharedMaterial: {fileID: -1642349857398612507, guid: 03a7fb198d66489459d6ac281413abca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1169,7 +1169,7 @@ GameObject:
   - component: {fileID: 8392517354924213729}
   - component: {fileID: 2283411825681534529}
   - component: {fileID: 3193610532206039997}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1185,7 +1185,7 @@ Transform:
   m_GameObject: {fileID: 7695832450789894316}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.83, y: -1.54, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1242,6 +1242,7 @@ MonoBehaviour:
   maxX: 0
   minY: 0
   maxY: 0
+  canMove: 1
 --- !u!61 &4541870340243325339
 BoxCollider2D:
   m_ObjectHideFlags: 0
