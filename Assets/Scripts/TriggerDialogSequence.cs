@@ -22,12 +22,17 @@ public class TriggerDialogSequence : MonoBehaviour
 
     private bool hasTriggered = false;
     private bool isTyping = false;
+    [Header("Ending Music")]
+    public AudioClip endingBGM;
+    private AudioSource bgmAudioSource;
 
     void Awake()
     {
     
         if (dialogPanel != null) dialogPanel.SetActive(false);
         if (dialogCanvasGroup != null) dialogCanvasGroup.alpha = 0;
+        bgmAudioSource = gameObject.AddComponent<AudioSource>();
+        bgmAudioSource.loop = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -50,7 +55,12 @@ public class TriggerDialogSequence : MonoBehaviour
         nameText.text = charName;
         yield return StartCoroutine(FadeCanvas(dialogCanvasGroup, 0, 1));
 
-       
+        if (endingBGM != null && bgmAudioSource != null)
+        {
+            bgmAudioSource.clip = endingBGM;
+            bgmAudioSource.Play();
+        }
+
         foreach (string line in dialogLines)
         {
             yield return StartCoroutine(TypeText(line));
