@@ -34,6 +34,7 @@ public class InGameUIInputManager : MonoBehaviour
     public void Restart()
     {
         audioSource.Play();
+	Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
