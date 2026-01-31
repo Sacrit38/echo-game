@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
       propertyPath: moveSpeed
-      value: 1.6
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8288353146759201230, guid: d887ad100b7beb044a6f080e37ca4c11, type: 3}
       propertyPath: stepInterval
@@ -1678,6 +1678,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1156404614374693198, guid: bd33f9de3448f0e4381751dadfaf9fdb, type: 3}
+      propertyPath: speed
+      value: 2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5598115600540744212, guid: bd33f9de3448f0e4381751dadfaf9fdb, type: 3}
       propertyPath: m_Name
       value: Stalker_Briar

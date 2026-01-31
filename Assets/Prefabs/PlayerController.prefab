@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b91b537d82eaf499528895d32cccae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 2.5
   stepInterval: 0.7
   standbyInterval: 1
   playerSprite: {fileID: 0}
